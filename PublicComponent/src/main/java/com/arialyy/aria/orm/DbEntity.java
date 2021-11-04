@@ -215,7 +215,12 @@ public abstract class DbEntity {
       }
     }
     if (!insertD.isEmpty()) {
-      wrapper.insertManyData(insertD);
+      try {
+        wrapper.insertManyData(insertD);
+      } catch (Throwable throwable) {
+
+      }
+
     }
     if (!updateD.isEmpty()) {
       wrapper.updateManyData(updateD);
