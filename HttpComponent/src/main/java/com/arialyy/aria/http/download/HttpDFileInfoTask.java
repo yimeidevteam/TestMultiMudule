@@ -139,6 +139,9 @@ final class HttpDFileInfoTask implements IInfoTask, Runnable {
         } else {
             ALog.d(TAG, "使用自定义adapter");
         }
+        if (conn == null) {
+            return;
+        }
         long len = lenAdapter.handleFileLen(conn.getHeaderFields());
 
         if (!FileUtil.checkMemorySpace(mEntity.getFilePath(), len)) {
