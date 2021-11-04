@@ -246,6 +246,8 @@ public abstract class AbsEntity extends DbEntity implements IEntity, Parcelable,
     dest.writeInt(this.percent);
     dest.writeByte(this.isComplete ? (byte) 1 : (byte) 0);
     dest.writeLong(this.stopTime);
+    dest.writeLong(this.rowID);
+
   }
 
   protected AbsEntity(Parcel in) {
@@ -261,5 +263,6 @@ public abstract class AbsEntity extends DbEntity implements IEntity, Parcelable,
     this.percent = in.readInt();
     this.isComplete = in.readByte() != 0;
     this.stopTime = in.readLong();
+    this.rowID = in.readLong();
   }
 }

@@ -26,6 +26,7 @@ import android.net.NetworkRequest;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+
 import com.arialyy.aria.core.config.AppConfig;
 import com.arialyy.aria.core.config.Configuration;
 import com.arialyy.aria.core.config.DGroupConfig;
@@ -35,12 +36,15 @@ import com.arialyy.aria.core.config.XMLReader;
 import com.arialyy.aria.util.ALog;
 import com.arialyy.aria.util.CommonUtil;
 import com.arialyy.aria.util.FileUtil;
+
+import org.xml.sax.SAXException;
+
 import java.io.File;
 import java.io.IOException;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.SAXException;
 
 public class AriaConfig {
   private static final String TAG = "AriaConfig";
@@ -157,7 +161,7 @@ public class AriaConfig {
     }
   }
 
-  private boolean isNetworkAvailable() {
+  public boolean isNetworkAvailable() {
     // 获取手机所有连接管理对象（包括对wi-fi,net等连接的管理）
     ConnectivityManager connectivityManager =
         (ConnectivityManager) getAPP().getSystemService(Context.CONNECTIVITY_SERVICE);
