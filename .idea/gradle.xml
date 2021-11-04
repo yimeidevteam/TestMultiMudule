@@ -22,9 +22,6 @@
             <option value="$PROJECT_DIR$/PublicComponent" />
             <option value="$PROJECT_DIR$/SFtpComponent" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/mylib1" />
-            <option value="$PROJECT_DIR$/mylib2" />
-            <option value="$PROJECT_DIR$/mylib3" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
