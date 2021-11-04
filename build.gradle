@@ -26,3 +26,18 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    versionCode = 391
+    versionName = 'v4.1'
+
+    compileSdkVersion = 30
+    supportLibVersion = "27.1.1"
+    buildToolsVersion = "30.0.3"
+    targetSdkVersion = 30
+    lifecycleVersion = "1.1.1"
+    minSdkVersion = 16
+
+    // 以下是androidX
+    XAppcompatVersion = "1.1.0"
+}

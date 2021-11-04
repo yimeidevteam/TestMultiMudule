@@ -12,6 +12,15 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AppFrame" />
+            <option value="$PROJECT_DIR$/Aria" />
+            <option value="$PROJECT_DIR$/AriaAnnotations" />
+            <option value="$PROJECT_DIR$/AriaCompiler" />
+            <option value="$PROJECT_DIR$/FtpComponent" />
+            <option value="$PROJECT_DIR$/HttpComponent" />
+            <option value="$PROJECT_DIR$/M3U8Component" />
+            <option value="$PROJECT_DIR$/PublicComponent" />
+            <option value="$PROJECT_DIR$/SFtpComponent" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/mylib1" />
             <option value="$PROJECT_DIR$/mylib2" />

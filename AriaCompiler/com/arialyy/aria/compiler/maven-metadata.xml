@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.arialyy.aria</groupId>
+  <artifactId>compiler</artifactId>
+  <versioning>
+    <release>3.9</release>
+    <versions>
+      <version>3.9</version>
+    </versions>
+    <lastUpdated>20210310080846</lastUpdated>
+  </versioning>
+</metadata>
