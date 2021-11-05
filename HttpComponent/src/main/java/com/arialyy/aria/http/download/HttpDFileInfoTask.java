@@ -157,9 +157,9 @@ final class HttpDFileInfoTask implements IInfoTask, Runnable {
             String md5Code = conn.getHeaderField("Content-MD5");
             mEntity.setMd5Code(md5Code);
         }
-        if (TextUtils.isEmpty(mEntity.geteTag())) {
+        if (TextUtils.isEmpty(mEntity.getMd5Code())) {
             String ETag = conn.getHeaderField("ETag");
-            mEntity.seteTag(ETag);
+            mEntity.setMd5Code(ETag);
           Log.d("Download", "md5=" + ETag);
         }
 
