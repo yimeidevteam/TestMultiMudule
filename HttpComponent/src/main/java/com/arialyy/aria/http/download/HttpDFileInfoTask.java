@@ -51,6 +51,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -142,7 +143,14 @@ final class HttpDFileInfoTask implements IInfoTask, Runnable {
         if (conn == null) {
             return;
         }
-        long len = lenAdapter.handleFileLen(conn.getHeaderFields());
+        Map<String, List<String>> headerFields = null;
+
+        try {
+            headerFields = conn.getHeaderFields();
+        } catch (Throwable throwable) {
+            headerFields = new HashMap<>();
+        }
+        long len = lenAdapter.handleFileLen(headerFields);
 
         if (!FileUtil.checkMemorySpace(mEntity.getFilePath(), len)) {
             failDownload(new AriaHTTPException(
@@ -160,7 +168,7 @@ final class HttpDFileInfoTask implements IInfoTask, Runnable {
         if (TextUtils.isEmpty(mEntity.getMd5Code())) {
             String ETag = conn.getHeaderField("ETag");
             mEntity.setMd5Code(ETag);
-          Log.d("Download", "md5=" + ETag);
+            Log.d("Download", "md5=" + ETag);
         }
 
         boolean isChunked = false;
@@ -168,7 +176,7 @@ final class HttpDFileInfoTask implements IInfoTask, Runnable {
         if (!TextUtils.isEmpty(str) && str.equals("chunked")) {
             isChunked = true;
         }
-        Map<String, List<String>> headers = conn.getHeaderFields();
+        Map<String, List<String>> headers = headerFields;
         String disposition = conn.getHeaderField("Content-Disposition");
 
         if (taskOption.isUseServerFileName()) {
