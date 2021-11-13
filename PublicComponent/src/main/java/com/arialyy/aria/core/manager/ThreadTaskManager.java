@@ -108,11 +108,7 @@ public class ThreadTaskManager {
     } catch (Exception e) {
       e.printStackTrace();
     } finally {
-      try {
-        LOCK.unlock();
-      } catch (Throwable throwable) {
-
-      }
+      LOCK.unlock();
     }
   }
 

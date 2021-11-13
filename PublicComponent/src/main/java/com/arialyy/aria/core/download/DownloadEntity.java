@@ -31,7 +31,7 @@ import com.arialyy.aria.util.CommonUtil;
  * Created by lyy on 2015/12/25.
  * 下载实体
  */
-public class DownloadEntity extends AbsNormalEntity implements Parcelable {
+public class DownloadEntity extends AbsNormalEntity implements Parcelable, Cloneable {
   @Unique private String downloadPath; //保存路径
 
   /**
@@ -57,8 +57,6 @@ public class DownloadEntity extends AbsNormalEntity implements Parcelable {
 
   @Ignore
   private M3U8Entity m3U8Entity;
-
-
 
   /**
    * 获取m3u8数据信息
@@ -192,7 +190,6 @@ public class DownloadEntity extends AbsNormalEntity implements Parcelable {
     dest.writeString(this.disposition);
     dest.writeString(this.serverFileName);
     dest.writeParcelable(this.m3U8Entity, flags);
-//    dest.writeString(this.eTag);
   }
 
   protected DownloadEntity(Parcel in) {
@@ -203,7 +200,6 @@ public class DownloadEntity extends AbsNormalEntity implements Parcelable {
     this.disposition = in.readString();
     this.serverFileName = in.readString();
     this.m3U8Entity = in.readParcelable(M3U8Entity.class.getClassLoader());
-//    this.eTag = in.readString();
   }
 
   public static final Creator<DownloadEntity> CREATOR = new Creator<DownloadEntity>() {

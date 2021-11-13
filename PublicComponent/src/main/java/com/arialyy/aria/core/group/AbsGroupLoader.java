@@ -217,14 +217,24 @@ public abstract class AbsGroupLoader implements ILoaderVisitor, ILoader {
 
   @Override public void cancel() {
     isCancel = true;
+    if (mInfoTask != null){
+      mInfoTask.cancel();
+    }
     closeTimer();
     mSubQueue.removeAllTask();
     mListener.onCancel();
   }
 
   @Override public void stop() {
+    if (mInfoTask != null){
+      mInfoTask.stop();
+    }
     isStop = true;
-    mSubQueue.stopAllTask();
+    if (mSubQueue.getExecSize() == 0) {
+      mListener.onStop(mGTWrapper.getEntity().getCurrentProgress());
+    } else {
+      mSubQueue.stopAllTask();
+    }
     closeTimer();
   }
 

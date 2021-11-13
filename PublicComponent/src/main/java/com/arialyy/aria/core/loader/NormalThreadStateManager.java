@@ -249,8 +249,14 @@ public class NormalThreadStateManager implements IThreadStateManager {
   private boolean mergeFile() {
     if (mTaskRecord.threadNum == 1) {
       File targetFile = new File(mTaskRecord.filePath);
-      if (targetFile.exists() && targetFile.length() == mTaskRecord.fileLength){
-        return true;
+      if (targetFile.exists()){
+        //没有获得文件长度：不支持断点续传
+        if (mTaskRecord.fileLength == 0 && targetFile.length() != 0) {
+          return true;
+        }
+        if (targetFile.length() != 0 && targetFile.length() == mTaskRecord.fileLength) {
+          return true;
+        }
       }
       FileUtil.deleteFile(targetFile);
       File partFile = new File(String.format(IRecordHandler.SUB_PATH, mTaskRecord.filePath, 0));

@@ -1,9 +1,5 @@
-plugins {
-  id "com.android.library"
-  id "kotlin-android"
-  id "kotlin-kapt"
-  id "com.github.dcendents.android-maven"
-}
+apply plugin: 'com.android.library'
+
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion
   buildToolsVersion rootProject.ext.buildToolsVersion
@@ -19,6 +15,9 @@ android {
   }
 
   buildTypes {
+    debug{
+      debuggable true
+    }
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -36,3 +35,8 @@ dependencies {
   testImplementation 'junit:junit:4.12'
 }
 
+//apply from: 'bintray-release.gradle'
+ext{
+  PUBLISH_ARTIFACT_ID = 'public'
+}
+apply from: '../gradle/mavenCentral-release.gradle'
